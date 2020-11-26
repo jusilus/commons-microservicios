@@ -24,6 +24,8 @@ public class CommonController<E, S extends CommonService<E>> {
 	@Autowired
 	protected S commonService;
 	
+	/* METODOS GET */
+	
 	@GetMapping
 	public ResponseEntity<?> listar(){		
 		return ResponseEntity.ok().body(commonService.findAll());
@@ -43,6 +45,8 @@ public class CommonController<E, S extends CommonService<E>> {
 		return ResponseEntity.ok(o.get());
 	}
 	
+	/* METODOS POST */
+	
 	@PostMapping
 	public ResponseEntity<?> agregar(@Valid @RequestBody E entity, BindingResult result){
 		if(result.hasErrors()) {
@@ -51,6 +55,8 @@ public class CommonController<E, S extends CommonService<E>> {
 		E entityDb = commonService.save(entity);
 		return ResponseEntity.status(HttpStatus.CREATED).body(entityDb);
 	}
+	
+	/* METODOS DELETE */
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminar(@PathVariable Long id) {		
