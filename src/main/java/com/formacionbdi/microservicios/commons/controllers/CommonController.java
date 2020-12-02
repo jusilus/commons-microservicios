@@ -63,6 +63,8 @@ public class CommonController<E, S extends CommonService<E>> {
 		commonService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	/* OTROS METODOS */
 
 	protected ResponseEntity<?> validar(BindingResult result){
 		Map<String, Object> errores = new HashMap<>();
